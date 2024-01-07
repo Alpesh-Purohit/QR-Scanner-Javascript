@@ -1,0 +1,28 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html5-qrcode/2.3.8/html5-qrcode.min.js"></script>
+<style>
+  .result {
+    background-color: green;
+    color: #fff;
+    padding: 20px;
+  }
+
+  .row {
+    display: flex;
+    flex-direction: column;
+  }
+</style>
+<body>
+
+<div style="width:250px; " id="reader"></div>
+
+<script>
+const html5QrCode = new Html5Qrcode("reader");
+
+const qrCodeSuccessCallback = (decodedText, decodedResult) => {
+    document.getElementById('result').textContent = decodedText;
+};
+const config = { fps: 200, qrbox: 200 };
+html5QrCode.start({ facingMode: "environment" }, config, qrCodeSuccessCallback);
+</script>
+<div id="result">Result Here</div>
+</body>
